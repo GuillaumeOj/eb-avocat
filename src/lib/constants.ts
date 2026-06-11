@@ -133,6 +133,8 @@ export const QR_CARD = {
 	subtitle: "Avocate au Barreau de Lyon",
 	saveContact: "Enregistrer le contact",
 	visitWebsite: "Visiter le site web",
+	firefoxHint:
+		"Sur Firefox, l'enregistrement du contact n'est pas pris en charge. Ouvrez cette page dans Safari, ou utilisez les liens ci-dessous.",
 } as const;
 
 export const FOOTER = {
