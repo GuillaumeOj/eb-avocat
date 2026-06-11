@@ -95,9 +95,18 @@ export const TESTIMONIALS = {
 	],
 } as const;
 
+const ADDRESS = {
+	street: "29 rue du Président Édouard Herriot",
+	postalCode: "69002",
+	city: "Lyon",
+	country: "France",
+	countryCode: "FR",
+} as const;
+
 export const CONTACT = {
 	sectionTitle: "Contact",
-	address: "29 rue du Président Édouard Herriot, 69002 Lyon",
+	addressParts: ADDRESS,
+	address: `${ADDRESS.street}, ${ADDRESS.postalCode} ${ADDRESS.city}`,
 	phone: "+33 7 56 85 62 75",
 	email: "eva@biezunski-avocat.fr",
 	formFields: {
@@ -117,6 +126,15 @@ export const CONTACT = {
 		"Contentieux",
 		"Autre",
 	],
+} as const;
+
+export const QR_CARD = {
+	title: "Eva Biezunski",
+	subtitle: "Avocate au Barreau de Lyon",
+	saveContact: "Enregistrer le contact",
+	visitWebsite: "Visiter le site web",
+	firefoxHint:
+		"Sur Firefox, l'enregistrement du contact n'est pas pris en charge. Ouvrez cette page dans Safari, ou utilisez les liens ci-dessous.",
 } as const;
 
 export const FOOTER = {
