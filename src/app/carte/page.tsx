@@ -16,7 +16,9 @@ const contactLinks = [
 	{
 		Icon: MapPin,
 		label: CONTACT.address,
-		href: `https://maps.apple.com/?q=${encodeURIComponent(CONTACT.address)}`,
+		// Universal Google Maps URL: opens the Maps app when installed, otherwise the
+		// web map. Works on both Android and iOS (unlike maps.apple.com).
+		href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`,
 	},
 	{
 		Icon: Phone,
@@ -36,9 +38,10 @@ export default async function CartePage() {
 		redirect("/");
 	}
 
-	// Firefox on iOS cannot hand a .vcf off to Contacts (known Mozilla bug), so we
-	// nudge those users to Safari and always expose tap-to-act links as a fallback.
-	const isFirefox = /FxiOS|Firefox/i.test(userAgent);
+	// Firefox on iOS (FxiOS, WebKit) cannot hand a .vcf off to Contacts (known
+	// Mozilla bug), so we disable the save button there and nudge to Safari. Android
+	// Firefox (Gecko) handles vCards fine, so this is scoped to iOS only.
+	const isFirefoxIOS = /FxiOS/i.test(userAgent);
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-darker-teal to-dark-teal px-6 py-16">
@@ -55,7 +58,7 @@ export default async function CartePage() {
 				<p className="mt-2 text-lg font-300 text-white/80">{QR_CARD.subtitle}</p>
 
 				<div className="mt-12 flex w-full flex-col gap-4">
-					{isFirefox ? (
+					{isFirefoxIOS ? (
 						<div
 							aria-disabled="true"
 							className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded bg-white/10 px-8 py-4 font-500 text-white/40"
@@ -81,7 +84,7 @@ export default async function CartePage() {
 					</a>
 				</div>
 
-				{isFirefox && (
+				{isFirefoxIOS && (
 					<p className="mt-6 rounded bg-white/10 px-4 py-3 text-sm font-300 text-white/80">
 						{QR_CARD.firefoxHint}
 					</p>
