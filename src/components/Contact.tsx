@@ -1,22 +1,18 @@
 "use client";
 
-import { Mail, MapPin, Phone } from "lucide-react";
-import type { FormEvent } from "react";
+import { type FormEvent, useState } from "react";
+import { contactItems } from "@/components/contactItems";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { CONTACT } from "@/lib/constants";
-
-const contactItems = [
-	{ Icon: MapPin, text: CONTACT.address },
-	{ Icon: Phone, text: CONTACT.phone },
-	{ Icon: Mail, text: CONTACT.email },
-];
+import { CONTACT, OTHER_SUBJECT } from "@/lib/constants";
 
 const labelClass = "mb-1 block text-sm font-500 text-near-black";
 const inputClass =
 	"w-full rounded border border-gray-300 px-4 py-2 font-300 text-sm text-near-black focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 focus:outline-none transition-colors";
 
 export function Contact() {
+	const [subject, setSubject] = useState("");
+
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 	};
@@ -30,12 +26,23 @@ export function Contact() {
 					<div>
 						<h3 className="mb-6 text-xl font-700 text-near-black">Coordonnées</h3>
 						<div className="space-y-4">
-							{contactItems.map(({ Icon, text }) => (
+							{contactItems.map(({ Icon, text, href, external }) => (
 								<div key={text} className="flex items-start gap-3">
 									<span className="flex h-5 shrink-0 items-center">
 										<Icon className="h-5 w-5 text-primary-light" />
 									</span>
-									<p className="text-sm font-300 leading-5 text-gray-700">{text}</p>
+									{href ? (
+										<a
+											href={href}
+											target={external ? "_blank" : undefined}
+											rel={external ? "noopener noreferrer" : undefined}
+											className="text-sm font-300 leading-5 text-gray-700 transition-colors hover:text-primary-light"
+										>
+											{text}
+										</a>
+									) : (
+										<p className="text-sm font-300 leading-5 text-gray-700">{text}</p>
+									)}
 								</div>
 							))}
 						</div>
@@ -75,7 +82,13 @@ export function Contact() {
 							<label htmlFor="subject" className={labelClass}>
 								{CONTACT.formFields.subject}
 							</label>
-							<select id="subject" className={inputClass}>
+							<select
+								id="subject"
+								name="subject"
+								value={subject}
+								onChange={(e) => setSubject(e.target.value)}
+								className={inputClass}
+							>
 								<option value="">-- Sélectionnez --</option>
 								{CONTACT.subjectOptions.map((opt) => (
 									<option key={opt} value={opt}>
@@ -84,6 +97,14 @@ export function Contact() {
 								))}
 							</select>
 						</div>
+						{subject === OTHER_SUBJECT && (
+							<div>
+								<label htmlFor="customSubject" className={labelClass}>
+									{CONTACT.formFields.customSubject}
+								</label>
+								<input id="customSubject" name="customSubject" type="text" className={inputClass} />
+							</div>
+						)}
 						<div>
 							<label htmlFor="message" className={labelClass}>
 								{CONTACT.formFields.message}

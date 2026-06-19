@@ -1,10 +1,16 @@
 export const SITE = {
 	name: "Eva Biezunski",
-	title: "Eva Biezunski - Avocate en droit des affaires",
+	title: "Eva Biezunski Avocate, Cabinet dédié aux professionnels libéraux",
 	description:
-		"Cabinet d'avocat spécialisé en droit des affaires pour les professionnels de santé libéraux. Conseil juridique, création de sociétés, cession de patientèle.",
-	url: "https://eva-biezunski-avocate.fr",
+		"Cabinet d'avocat dédié aux professionnels libéraux : création de sociétés, clientèle/patientèle, contrats professionnels, contentieux, mécénat et formations.",
+	url: "https://biezunski-avocat.fr",
 } as const;
+
+export const REVIEW_URL = "https://maps.app.goo.gl/qjynjiyhA1APuACL8";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/eva-biezunski-36a4b691/";
+
+// Subject value that reveals the free-text "Précisez l'objet" field in the contact form.
+export const OTHER_SUBJECT = "Autre";
 
 export const NAV_LINKS = [
 	{ label: "Accueil", href: "#accueil" },
@@ -15,17 +21,18 @@ export const NAV_LINKS = [
 ] as const;
 
 export const HERO = {
-	heading: "Votre avocate en droit des affaires",
-	subheading: "Spécialisée dans l'accompagnement juridique des professionnels de santé libéraux",
+	heading: "Avocate en droit des sociétés",
+	subheading: "Cabinet d'avocat dédié aux professionnels libéraux",
 	cta: "Prendre rendez-vous",
 } as const;
 
 export const ABOUT = {
 	sectionTitle: "À propos",
 	paragraphs: [
-		"Me Eva Biezunski est avocate au Barreau de Lyon, spécialisée en droit des affaires et plus particulièrement dans l'accompagnement des professionnels de santé libéraux.",
-		"Forte d'une expérience approfondie dans le conseil aux médecins, dentistes, kinésithérapeutes et autres praticiens, elle propose un accompagnement juridique sur mesure, adapté aux spécificités de chaque profession.",
-		"Son approche allie rigueur juridique et écoute attentive, afin de fournir des solutions pragmatiques et personnalisées à chacun de ses clients.",
+		"Aider les professionnels libéraux à se structurer et à entretenir des relations harmonieuses est le cœur de l'activité d'Eva.",
+		"Elle détermine aux côtés des professionnels libéraux le type de sociétés, les contrats les plus adaptés à leurs projets, qu'ils relèvent de leur activité professionnelle réglementée, ou de démarches entrepreneuriales.",
+		"Elle anticipe le développement de ces activités, afin de proposer un cadre adapté dès la création du projet tout en prenant en compte les ambitions futures de ses clients. Elle apporte une attention particulière aux relations entre associés en traitant en amont les sujets de friction éventuels.",
+		"Son accompagnement se poursuit pour trouver des réponses adaptées aux questions déontologiques, et dans leurs relations avec les Ordres professionnels.",
 	],
 } as const;
 
@@ -36,37 +43,36 @@ export const SERVICES = {
 			icon: "building",
 			title: "Création de sociétés",
 			description:
-				"Accompagnement dans la création de structures d'exercice : SEL, SELARL, SELAS, SCM, SCI. Rédaction des statuts et formalités.",
+				"Je vous guide dans la création de structures adaptées à vos besoins, pour votre activité (SEL), pour votre matériel (SCM), pour vos locaux (SCI), pour vos activités commerciales (SARL, SAS), pour une restructuration (SPFPL), de la rédaction des statuts aux démarches devant les Ordres.",
 		},
 		{
 			icon: "handshake",
-			title: "Cession de patientèle",
+			title: "Clientèle / Patientèle",
 			description:
-				"Conseil et rédaction des actes de cession de patientèle, négociation des conditions et sécurisation juridique de la transaction.",
+				"Prêt, cession, apport : je vous conseille pour déterminer l'opération qui vous correspond pour sécuriser votre fonds libéral.",
 		},
 		{
 			icon: "document",
 			title: "Contrats professionnels",
 			description:
-				"Rédaction et négociation de contrats d'exercice, de collaboration, de remplacement, baux professionnels et conventions entre praticiens.",
-		},
-		{
-			icon: "bulb",
-			title: "Conseil juridique",
-			description:
-				"Conseil permanent en droit des affaires, droit des sociétés et droit médical. Accompagnement dans les décisions stratégiques.",
+				"Je rédige et je négocie des contrats d'exercice libéral, de collaboration, de remplacement, de prestation de services.",
 		},
 		{
 			icon: "scale",
 			title: "Contentieux",
-			description:
-				"Représentation et défense devant les juridictions compétentes. Gestion des litiges commerciaux et professionnels.",
+			description: "Je représente les professionnels libéraux devant les Conseils de l'Ordre.",
 		},
 		{
-			icon: "shield",
-			title: "Mise en conformité",
+			icon: "heart",
+			title: "Mécénat",
 			description:
-				"Audit juridique et mise en conformité réglementaire. RGPD, obligations professionnelles et normes sectorielles.",
+				"J'aide les porteurs de projets dans la création d'associations, de fonds de dotation.",
+		},
+		{
+			icon: "graduation",
+			title: "Formations",
+			description:
+				"Auprès des Élèves-avocats, des Confrères, d'entrepreneurs, j'interviens pour leur parler de structures d'exercice, de passage du statut d'entrepreneur individuel à celui de dirigeant de société, d'activités commerciales pour les avocats, etc.",
 		},
 	],
 } as const;
@@ -76,21 +82,13 @@ export const TESTIMONIALS = {
 	items: [
 		{
 			quote:
-				"Me Biezunski m'a accompagné dans la création de ma SELARL avec un professionnalisme remarquable. Elle a su rendre accessible des notions juridiques complexes et m'a guidé à chaque étape.",
-			author: "Dr. Martin D.",
-			profession: "Médecin généraliste",
+				"Maître Biezunski, une femme d'exception, parfaitement disponible et efficace, m'a accompagnée à quitter mon cabinet infirmier. Son professionnalisme et sa réactivité m'ont permis de vivre cette période sereinement. Ses explications et ses conseils étaient pertinents. Je recommande vivement.",
+			author: "N.F.",
 		},
 		{
 			quote:
-				"Lors de la cession de mon cabinet dentaire, j'ai pu compter sur les conseils avisés de Me Biezunski. Sa rigueur et sa disponibilité ont été déterminantes pour le succès de cette opération.",
-			author: "Dr. Sophie L.",
-			profession: "Chirurgien-dentiste",
-		},
-		{
-			quote:
-				"Un accompagnement juridique de grande qualité pour la rédaction de nos contrats de collaboration. Me Biezunski comprend parfaitement les enjeux spécifiques de notre profession.",
-			author: "Dr. Pierre M.",
-			profession: "Kinésithérapeute",
+				"Je suis très satisfait de l'accompagnement de Me Biezunski pour la création de ma société et de mon statut d'auto-entrepreneur, et la mise en relation avec d'autres professionnels compétents (avocat en droit de la propriété intellectuelle, expert-comptable). Grâce à elle, je me sens sécurisé pour le lancement de mon activité.",
+			author: "G.O.",
 		},
 	],
 } as const;
@@ -115,16 +113,18 @@ export const CONTACT = {
 		email: "Email",
 		phone: "Téléphone",
 		subject: "Objet",
+		customSubject: "Précisez l'objet",
 		message: "Message",
 		submit: "Envoyer",
 	},
 	subjectOptions: [
 		"Création de société",
-		"Cession de patientèle",
-		"Contrat professionnel",
-		"Conseil juridique",
+		"Clientèle / Patientèle",
+		"Contrats professionnels",
 		"Contentieux",
-		"Autre",
+		"Mécénat",
+		"Formation",
+		OTHER_SUBJECT,
 	],
 } as const;
 

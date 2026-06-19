@@ -31,7 +31,7 @@ const jsonLd = {
 		postalCode: CONTACT.addressParts.postalCode,
 		addressCountry: CONTACT.addressParts.countryCode,
 	},
-	knowsAbout: ["Droit des affaires", "Droit des sociétés", "Professionnels de santé libéraux"],
+	knowsAbout: ["Droit des sociétés", "Droit des affaires", "Professionnels libéraux"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
