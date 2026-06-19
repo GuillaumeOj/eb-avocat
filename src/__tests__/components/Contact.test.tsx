@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Contact } from "@/components/Contact";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, OTHER_SUBJECT } from "@/lib/constants";
 
 describe("Contact", () => {
 	it("renders form fields", () => {
@@ -23,5 +23,20 @@ describe("Contact", () => {
 		expect(screen.getByText(CONTACT.address)).toBeInTheDocument();
 		expect(screen.getByText(CONTACT.phone)).toBeInTheDocument();
 		expect(screen.getByText(CONTACT.email)).toBeInTheDocument();
+	});
+
+	it("shows the custom subject field only when 'Autre' is selected", () => {
+		render(<Contact />);
+		expect(screen.queryByLabelText(CONTACT.formFields.customSubject)).not.toBeInTheDocument();
+
+		fireEvent.change(screen.getByLabelText(CONTACT.formFields.subject), {
+			target: { value: OTHER_SUBJECT },
+		});
+		expect(screen.getByLabelText(CONTACT.formFields.customSubject)).toBeInTheDocument();
+
+		fireEvent.change(screen.getByLabelText(CONTACT.formFields.subject), {
+			target: { value: "Contentieux" },
+		});
+		expect(screen.queryByLabelText(CONTACT.formFields.customSubject)).not.toBeInTheDocument();
 	});
 });

@@ -1,4 +1,4 @@
-import { Building2, FileText, Handshake, Lightbulb, Scale, ShieldCheck } from "lucide-react";
+import { Building2, FileText, GraduationCap, HandHeart, Handshake, Scale } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { SERVICES } from "@/lib/constants";
@@ -7,9 +7,9 @@ const icons = {
 	building: Building2,
 	handshake: Handshake,
 	document: FileText,
-	bulb: Lightbulb,
 	scale: Scale,
-	shield: ShieldCheck,
+	heart: HandHeart,
+	graduation: GraduationCap,
 };
 
 export function Services() {
